@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Basic Web Page</title>
+        <title>Hello Page</title>
         <style>
             body {
                 background-color: #2D2D2D;
@@ -21,5 +21,6 @@
     </head>
     <body>
         <p>Hello World!</p>
+        <a href="about">About</a>
     </body>
 </html>
