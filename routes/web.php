@@ -27,3 +27,8 @@ Route::get('/about/{name?}', function ($name = 'Guest') {
     $name =  ucfirst($name);
     return view('about', ['name' => $name]);
 });
+
+Route::name('users.')->group(function () {
+    Route::get('/users', 'UserController@index')->name('index');
+    Route::get('/users/{id}', 'UserController@show')->name('show');
+});

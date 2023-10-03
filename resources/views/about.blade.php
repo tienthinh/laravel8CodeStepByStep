@@ -14,5 +14,8 @@
         color: white;
         font-family: "Source Code Pro", Menlo, Monaco, fixed-width;
     }
+    a {
+        color: rgb(206,102,7);
+    }
 </style>
 <h1>Hi {{ $name }}!</h1>

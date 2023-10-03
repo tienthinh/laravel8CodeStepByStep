@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello Page</title>
+        <title>User Page</title>
         <style>
             body {
                 background-color: #2D2D2D;
@@ -23,8 +23,11 @@
         </style>
     </head>
     <body>
-        <p>Hello World!</p>
-        <a href="users">Users</a><br>
-        <a href="about">About</a>
+        <p>
+            @foreach($users as $user)
+                {{ $user }} <br>
+            @endforeach
+        </p>
+        <a href="greeting">Hello page</a>
     </body>
 </html>
