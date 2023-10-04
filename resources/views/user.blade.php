@@ -7,9 +7,8 @@
                 background-color: #2D2D2D;
             }
             
-            h1 {
+            h1, h2 {
                 color: #C26356;
-                font-size: 30px;
                 font-family: Menlo, Monaco, fixed-width;
             }
             
@@ -23,6 +22,10 @@
         </style>
     </head>
     <body>
+        @php
+            $message = 'user component message';
+        @endphp
+        <x-header title="user component header" :message="$message"/>
         <p>
             @foreach($users as $user)
                 {{ $user }} <br>

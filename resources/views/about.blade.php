@@ -4,9 +4,8 @@
         color: white;
     }
     
-    h1 {
+    h1, h2 {
         color: #C26356;
-        font-size: 30px;
         font-family: Menlo, Monaco, fixed-width;
     }
     
@@ -18,4 +17,5 @@
         color: rgb(206,102,7);
     }
 </style>
+<x-header title="about component header"/>
 <h1>Hi {{ $name }}!</h1>

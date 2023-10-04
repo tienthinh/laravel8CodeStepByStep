@@ -7,9 +7,8 @@
                 background-color: #2D2D2D;
             }
             
-            h1 {
+            h1, h2 {
                 color: #C26356;
-                font-size: 30px;
                 font-family: Menlo, Monaco, fixed-width;
             }
             
@@ -23,6 +22,7 @@
         </style>
     </head>
     <body>
+        <x-header title="greeting component header" />
         <p>Hello World!</p>
         <a href="users">Users</a><br>
         <a href="about">About</a>
