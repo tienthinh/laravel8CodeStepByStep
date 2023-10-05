@@ -31,4 +31,5 @@ Route::get('/about/{name?}', function ($name = 'Guest') {
 Route::name('users.')->group(function () {
     Route::get('/users', 'UserController@index')->name('index');
     Route::get('/users/{id}', 'UserController@show')->name('show');
+    Route::post('/login', 'UserController@login')->name('login');
 });

@@ -34,5 +34,24 @@
             @endforeach
         </p>
         <a href="greeting">Hello page</a>
+        <form action="{{ route('users.login') }}" method="POST">
+            @csrf
+            <input type="text" name="username" placeholder="Enter user name" value="{{ old('username') }}" />
+            <br>
+            <span style="color:red">
+            @error('username')
+            {{ $message }}
+            @enderror
+            </span>
+            <br>
+            <input type="password" name="password" placeholder="Enter password" value="{{ old('username') }}" />
+            <br>
+            <span style="color:red">
+            @error('password')
+            {{ $message }}
+            @enderror
+            </span>
+            <button type="submit">Submit</button>
+        </form>
     </body>
 </html>

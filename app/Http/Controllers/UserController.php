@@ -15,6 +15,7 @@ class UserController extends Controller
     {
         $userList = ['John', 'Joe'];
         dump(\Illuminate\Support\Facades\Route::currentRouteName());
+        dump(route('users.login'));
         return view('user', ['users' => $userList]);
     }
 
@@ -61,5 +62,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function login(Request $request) {
+        $request->validate([
+            'username' => 'required|min:3|max:10',
+            'password' => 'required|min:5'
+        ]);
+        return $request->input();
     }
 }
