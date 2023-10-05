@@ -25,7 +25,9 @@
         @php
             $message = 'user component message';
         @endphp
-        <x-header title="user component header" :message="$message"/>
+        <x-header title="user component header" :message="$message">
+            <p>user component slot</p>
+        </x-header>
         <p>
             @foreach($users as $user)
                 {{ $user }} <br>
