@@ -13,7 +13,7 @@ class Header extends Component
      *
      * @return void
      */
-    public function __construct($title, $message)
+    public function __construct($title = '', $message = '')
     {
         $this->title = $title;
         $this->message = $message;

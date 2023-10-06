@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/greeting', function () {
     // return view('welcome');
     return view('hello');
-});
+})->name('homepage');
 
 Route::get('/about/{name?}', function ($name = 'Guest') {
     // return view('welcome');
@@ -28,8 +28,12 @@ Route::get('/about/{name?}', function ($name = 'Guest') {
     return view('about', ['name' => $name]);
 });
 
-Route::name('users.')->group(function () {
+Route::middleware(['protectedPage'])->name('users.')->group(function () {
     Route::get('/users', 'UserController@index')->name('index');
     Route::get('/users/{id}', 'UserController@show')->name('show');
     Route::post('/login', 'UserController@login')->name('login');
 });
+
+Route::get('/noaccess', function() {
+    return view('noaccess');
+})->name('noaccess');
