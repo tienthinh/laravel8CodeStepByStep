@@ -5,6 +5,12 @@
         <style>
             body {
                 background-color: #2D2D2D;
+                color:antiquewhite;
+            }
+            pre {
+                word-break: break-all;
+                display: inline-block;
+                max-width: 100%;
             }
             
             h1, h2 {
@@ -29,9 +35,12 @@
             <p>user component slot</p>
         </x-header>
         <p>
-            @foreach($users as $user)
+            User with ID 1: <pre>{{ $user }}</pre>
+            <br>
+            User list: <pre>{{ $users }}</pre>
+            {{--  @foreach($users as $user)
                 {{ $user }} <br>
-            @endforeach
+            @endforeach  --}}
         </p>
         <a href="greeting">Hello page</a>
         <form action="{{ route('users.login') }}" method="POST">

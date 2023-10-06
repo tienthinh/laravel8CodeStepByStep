@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Http\Resources\UserResource;
+use App\Http\Resources\UserCollection;
 
 class UserController extends Controller
 {
@@ -13,10 +17,24 @@ class UserController extends Controller
      */
     public function index()
     {
-        $userList = ['John', 'Joe'];
-        dump(\Illuminate\Support\Facades\Route::currentRouteName());
-        dump(route('users.login'));
-        return view('user', ['users' => $userList]);
+        echo 'hello from UserController';
+        // resource
+        $userRes = UserResource::make(User::findOrFail(1));
+        $userJson = $userRes->toJson();
+        dump('userRes', $userRes);
+        dump('userJson', $userJson);
+        // resource collection
+        $userColl = DB::table('users')->select('*')->paginate(4);
+        $userResColl = UserCollection::make($userColl);
+        dump('userResColl', $userResColl);
+        // Transform the resource into an HTTP response
+        $userListJson = $userResColl->response()->getContent();
+        dump('userListJson', $userListJson);
+        
+        return view('user', [
+            'user' => $userJson,
+            'users' => $userListJson
+        ]);
     }
 
     /**
