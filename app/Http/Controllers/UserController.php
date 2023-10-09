@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\Response;
 
 class UserController extends Controller
 {
@@ -88,5 +90,14 @@ class UserController extends Controller
             'password' => 'required|min:5'
         ]);
         return $request->input();
+    }
+    
+    public function getUserListFromApi() {
+        $response = Http::get('https://reqres.in/api/users?page=1');
+        // The Illuminate\Http\Client\Response object also implements the PHP ArrayAccess interface, allowing you to access JSON response data directly on the response
+        $users = $response->json('data');
+        return view('userlist', [
+            'users' => $users
+        ]);
     }
 }
