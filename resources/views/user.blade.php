@@ -45,6 +45,7 @@
         <a href="greeting">Hello page</a>
         <form action="{{ route('users.login') }}" method="POST">
             @csrf
+            {{ method_field('PUT') }}
             <input type="text" name="username" placeholder="Enter user name" value="{{ old('username') }}" />
             <br>
             <span style="color:red">
