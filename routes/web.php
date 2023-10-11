@@ -31,8 +31,11 @@ Route::get('/about/{name?}', function ($name = 'Guest') {
 Route::middleware(['protectedPage'])->name('users.')->group(function () {
     Route::get('/users', 'UserController@index')->name('index');
     Route::get('/users/{id}', 'UserController@show')->name('show');
+    Route::get('/login', 'UserController@getLogin')->name('getLogin');
+    Route::get('/logout', 'UserController@logout')->name('logout');
     Route::post('/login', 'UserController@login')->name('login');
     Route::get('/getUserList', 'UserController@getUserListFromApi')->name('getUserList');
+    Route::get('/profile', 'UserController@getProfile')->name('profile');
 });
 
 Route::get('/noaccess', function() {

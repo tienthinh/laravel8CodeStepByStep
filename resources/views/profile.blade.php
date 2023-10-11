@@ -34,15 +34,11 @@
         <x-header title="user component header" :message="$message">
             <p>user component slot</p>
         </x-header>
-        <p>
-            User with ID 1: <pre>{{ $user }}</pre>
-            <br>
-            User list: <pre>{{ $users }}</pre>
-            {{--  @foreach($users as $user)
-                {{ $user }} <br>
-            @endforeach  --}}
-        </p>
-        <a href="greeting">Hello page</a>
-
+        <a href="greeting">Hello page</a><br>
+        <div>
+            <p>User name : {{ session('username') }}</p>
+            <p></p>
+            <a href="logout">Logout</a><br>
+        </div>
     </body>
 </html>

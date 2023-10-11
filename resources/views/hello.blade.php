@@ -24,7 +24,8 @@
     <body>
         <x-header title="greeting component header" />
         <p>Hello World!</p>
-        <a href="users">Users</a><br>
-        <a href="about">About</a>
+        <a href="{{ route('users.index') }}">Users</a><br>
+        <a href="about">About</a><br>
+        <a href="{{ route('users.login')}}">Login</a><br>
     </body>
 </html>

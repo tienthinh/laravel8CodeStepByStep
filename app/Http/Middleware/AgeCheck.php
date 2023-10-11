@@ -20,9 +20,9 @@ class AgeCheck
         $query = $request->query();
         $path = $request->path();
         $routeName = \Illuminate\Support\Facades\Route::currentRouteName();
-        dump($path, $routeName);
+        // dump($path, $routeName);
         if (!in_array($path, ['noaccess', 'greeting']) && (empty($query['age']) || $query['age'] < 15)) {
-            echo 'this text from ' . __FILE__;
+            echo '<br>this text from ' . __FILE__ . '<br>';
             // return redirect()->route('noaccess');
         }
         return $next($request);

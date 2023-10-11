@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Client\Response;
 
 class UserController extends Controller
@@ -89,7 +91,27 @@ class UserController extends Controller
             'username' => 'required|min:3|max:10',
             'password' => 'required|min:5'
         ]);
-        return $request->input();
+        $input = $request->input();
+        $request->session()->put('username', $input['username']);
+        return redirect()->route('users.profile');
+    }
+    
+    public function logout(Request $request) {
+        if (session()->has('username')) {
+            session()->pull('username');
+        }
+        return redirect()->route('users.login');
+    }
+    
+    public function getLogin(Request $request) {
+        if (session()->has('username')) {
+            return Redirect::route('users.profile');
+        }
+        return view('login');
+    }
+    
+    public function getProfile(Request $request) {
+        return view('profile');
     }
     
     public function getUserListFromApi() {
