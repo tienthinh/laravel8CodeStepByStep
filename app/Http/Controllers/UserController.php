@@ -49,7 +49,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required|min:3|max:10',
+            'password' => 'required|min:5',
+            'email'    => 'required|email',
+        ]);
+        $inputs = $request->input();
+        $request->session()->flash('username', $inputs['username']);
+        return redirect()->route('users.add');
+    }
+    
+    public function addUser(Request $request) {
+        return view('adduser');
     }
 
     /**
@@ -98,7 +109,8 @@ class UserController extends Controller
     
     public function logout(Request $request) {
         if (session()->has('username')) {
-            session()->pull('username');
+            $username = session()->pull('username', null);
+            // session()->forget('username');
         }
         return redirect()->route('users.login');
     }
@@ -113,7 +125,7 @@ class UserController extends Controller
     public function getProfile(Request $request) {
         return view('profile');
     }
-    
+
     public function getUserListFromApi() {
         $response = Http::get('https://reqres.in/api/users?page=1');
         // The Illuminate\Http\Client\Response object also implements the PHP ArrayAccess interface, allowing you to access JSON response data directly on the response

@@ -36,6 +36,8 @@ Route::middleware(['protectedPage'])->name('users.')->group(function () {
     Route::post('/login', 'UserController@login')->name('login');
     Route::get('/getUserList', 'UserController@getUserListFromApi')->name('getUserList');
     Route::get('/profile', 'UserController@getProfile')->name('profile');
+    Route::get('/add', 'UserController@addUser')->name('add');
+    Route::post('/add', 'UserController@store')->name('store');
 });
 
 Route::get('/noaccess', function() {
